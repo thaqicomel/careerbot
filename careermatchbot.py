@@ -95,8 +95,8 @@ if 'user_data' not in st.session_state:
         'timestamp': datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         'scenario_responses': []
     }
-if 'previous_responses' not in st.session_state:
-    st.session_state.previous_responses = []
+# if 'previous_responses' not in st.session_state:
+#     st.session_state.previous_responses = []
 
 # Streamlit application
 logo_url = "OIP.jpeg"
@@ -107,33 +107,33 @@ with col2:
     st.image(logo_url, width=100)
 
 # Display previous responses if they exist
-if st.session_state.previous_responses:
-    with st.expander("View Previous Responses", expanded=False):
-        for idx, response in enumerate(st.session_state.previous_responses, 1):
-            st.write(f"### Response {idx}")
-            st.write(f"**Timestamp:** {response['timestamp']}")
-            st.write(f"**Subject:** {response['subject_like']}")
-            st.write(f"**Opinion:** {response['like_not']}")
-            if 'career_suggestions' in response:
-                st.write("**Career Suggestions:**")
-                st.write(response['career_suggestions'])
-            if 'ambition' in response:
-                st.write(f"**Ambition:** {response['ambition']}")
-            if 'ambition_suggestion' in response:
-                st.write("**Ambition-Based Suggestion:**")
-                st.write(response['ambition_suggestion'])
-            if 'character' in response:
-                st.write(f"**Character Description:** {response['character']}")
-                st.write(f"**Personality Type:** {response['introvert_not']}")
-            if 'scenario_responses' in response:
-                st.write("**Scenario Responses:**")
-                for scenario in response['scenario_responses']:
-                    st.write(f"- **Scenario:** {scenario['Scenario']}")
-                    st.write(f"  **Response:** {scenario['Response']}")
-            if 'final_character_analysis' in response:
-                st.write("**Final Character Analysis:**")
-                st.write(response['final_character_analysis'])
-            st.markdown("---")
+# if st.session_state.previous_responses:
+#     with st.expander("View Previous Responses", expanded=False):
+#         for idx, response in enumerate(st.session_state.previous_responses, 1):
+#             st.write(f"### Response {idx}")
+#             st.write(f"**Timestamp:** {response['timestamp']}")
+#             st.write(f"**Subject:** {response['subject_like']}")
+#             st.write(f"**Opinion:** {response['like_not']}")
+#             if 'career_suggestions' in response:
+#                 st.write("**Career Suggestions:**")
+#                 st.write(response['career_suggestions'])
+#             if 'ambition' in response:
+#                 st.write(f"**Ambition:** {response['ambition']}")
+#             if 'ambition_suggestion' in response:
+#                 st.write("**Ambition-Based Suggestion:**")
+#                 st.write(response['ambition_suggestion'])
+#             if 'character' in response:
+#                 st.write(f"**Character Description:** {response['character']}")
+#                 st.write(f"**Personality Type:** {response['introvert_not']}")
+#             if 'scenario_responses' in response:
+#                 st.write("**Scenario Responses:**")
+#                 for scenario in response['scenario_responses']:
+#                     st.write(f"- **Scenario:** {scenario['Scenario']}")
+#                     st.write(f"  **Response:** {scenario['Response']}")
+#             if 'final_character_analysis' in response:
+#                 st.write("**Final Character Analysis:**")
+#                 st.write(response['final_character_analysis'])
+#             st.markdown("---")
 
 openai_api_key = st.text_input("OpenAI API Key", type="password")
 if not openai_api_key:
@@ -225,7 +225,7 @@ else:
                 })
                 
                 # Add current response to previous responses
-                st.session_state.previous_responses.append(st.session_state.user_data.copy())
+                # st.session_state.previous_responses.append(st.session_state.user_data.copy())
                 
                 # Set a flag to show the download button
                 st.session_state.show_download = True
